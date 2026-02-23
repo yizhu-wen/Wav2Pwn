@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Wav2Pwn: Extra Evaluation Results on LJSpeech and CommonVoice</title>
+  <style>
+    :root {
+      --bg: #f8f9fa;
+      --card: #fff;
+      --text: #1a1a1a;
+      --muted: #5a5a5a;
+      --border: #e0e0e0;
+      --accent: #0d6efd;
+      --accent-hover: #0a58ca;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--bg);
+      margin: 0;
+      padding: 1.5rem;
+      max-width: 1200px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    header {
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border);
+    }
+    h1 {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin: 0 0 0.25rem 0;
+    }
+    .subtitle {
+      color: var(--muted);
+      font-size: 0.95rem;
+      margin: 0;
+    }
+    section {
+      background: var(--card);
+      border-radius: 8px;
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+    }
+    section h2 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin: 0 0 1rem 0;
+      color: var(--text);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    th, td {
+      border: 1px solid var(--border);
+      padding: 0.6rem 0.75rem;
+      text-align: left;
+      vertical-align: middle;
+    }
+    th {
+      background: #f0f0f0;
+      font-weight: 600;
+    }
+    td.empty {
+      color: var(--muted);
+      font-style: italic;
+      min-width: 4rem;
+    }
+    audio {
+      height: 28px;
+      max-width: 180px;
+      vertical-align: middle;
+    }
+    .audio-cell { min-width: 200px; }
+    .note {
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-top: 1rem;
+    }
+    @media (max-width: 768px) {
+      table { font-size: 0.8rem; }
+      th, td { padding: 0.4rem 0.5rem; }
+      audio { max-width: 140px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Wav2Pwn: Extra Evaluation Results on LJSpeech and CommonVoice</h1>
+  </header>
+
+  <section>
+    <h2>1. Dataset-level metrics (extra evaluation)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Source model</th>
+          <th>Target model</th>
+          <th>Dataset</th>
+          <th>Clean CER (%)</th>
+          <th>Avg UASR</th>
+          <th>Avg TASR</th>
+          <th>SNR (dB)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>W2V2-large-960h</td>
+          <td>W2V2-base-100h</td>
+          <td rowspan="2">LJSpeech</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+        <tr>
+          <td>W2V2-Hubert-large-ls960h-ft</td>
+          <td>W2V2-Hubert-xlarge-ll60k</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+        <tr>
+          <td>W2V2-large-960h</td>
+          <td>W2V2-base-100h</td>
+          <td rowspan="2">CommonVoice</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+        <tr>
+          <td>W2V2-Hubert-large-ls960h-ft</td>
+          <td>W2V2-Hubert-xlarge-l160k</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section>
+    <h2>2. Sample-level results (audio demos)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Source model</th>
+          <th>Target model</th>
+          <th>Original Audio</th>
+          <th>Original Text</th>
+          <th>Target Text</th>
+          <th>Adversarial Audio</th>
+          <th>Generated Adversarial Text</th>
+          <th>TASR</th>
+          <th>UASR</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>W2V2-large-960h</td>
+          <td>W2V2-base-100h</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Original_audio_1.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Original_audio_1.wav</small></td>
+          <td>Sample text 1</td>
+          <td>Hello world</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Adversarial_audio_1.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Adversarial_audio_1.wav</small></td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+        <tr>
+          <td>W2V2-large-960h</td>
+          <td>W2V2-base-100h</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Original_audio_1.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Original_audio_1.wav</small></td>
+          <td>Sample text 1</td>
+          <td>Open the door</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Adversarial_audio_2.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Adversarial_audio_2.wav</small></td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+        <tr>
+          <td>W2V2-large-960h</td>
+          <td>W2V2-base-100h</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Original_audio_2.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Original_audio_2.wav</small></td>
+          <td>Sample text 2</td>
+          <td>Hello world</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Adversarial_audio_3.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Adversarial_audio_3.wav</small></td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+        <tr>
+          <td>W2V2-large-960h</td>
+          <td>W2V2-base-100h</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Original_audio_2.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Original_audio_2.wav</small></td>
+          <td>Sample text 2</td>
+          <td>Open the door</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Adversarial_audio_4.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Adversarial_audio_4.wav</small></td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+        <tr>
+          <td>W2V2-Hubert-large-ls960h-ft</td>
+          <td>W2V2-Hubert-xlarge-ll60k</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Original_audio_1.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Original_audio_1.wav</small></td>
+          <td>Sample text 1</td>
+          <td>Hello world</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Adversarial_audio_5.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Adversarial_audio_5.wav</small></td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+        <tr>
+          <td>W2V2-Hubert-large-ls960h-ft</td>
+          <td>W2V2-Hubert-xlarge-ll60k</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Original_audio_1.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Original_audio_1.wav</small></td>
+          <td>Sample text 1</td>
+          <td>Open the door</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Adversarial_audio_6.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Adversarial_audio_6.wav</small></td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+        <tr>
+          <td>W2V2-Hubert-large-ls960h-ft</td>
+          <td>W2V2-Hubert-xlarge-ll60k</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Original_audio_2.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Original_audio_2.wav</small></td>
+          <td>Sample text 2</td>
+          <td>Hello world</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Adversarial_audio_7.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Adversarial_audio_7.wav</small></td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+        <tr>
+          <td>W2V2-Hubert-large-ls960h-ft</td>
+          <td>W2V2-Hubert-xlarge-ll60k</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Original_audio_2.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Original_audio_2.wav</small></td>
+          <td>Sample text 2</td>
+          <td>Open the door</td>
+          <td class="audio-cell"><audio controls preload="metadata"><source src="audio/Adversarial_audio_8.wav" type="audio/wav">Your browser does not support the audio element.</audio><br><small>Adversarial_audio_8.wav</small></td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+          <td class="empty">—</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+  <p class="note" style="margin-top: 2rem;">TASR: Target Attack Success Rate; UASR: Untargeted Attack Success Rate; CER: Character Error Rate; SNR: Signal-to-Noise Ratio.</p>
+</body>
+</html>
